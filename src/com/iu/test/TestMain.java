@@ -41,8 +41,9 @@ public class TestMain {
 		
 		CountriesDAO countriesDAO = new CountriesDAO();
 		try {
-			countriesDAO.getList();
-			countriesDAO.getDetail("AU");
+			
+//			CountriesDTO countriesDTO = countriesDAO.getDetail("JP");
+//			countriesView.view(countriesDTO);
 			
 			ArrayList<CountriesDTO> ar = countriesDAO.getList();
 			countriesView.view(ar);

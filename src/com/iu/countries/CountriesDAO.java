@@ -26,6 +26,8 @@ public class CountriesDAO {
 			countriesDTO.setCountry_id(rs.getString("COUNTRY_ID"));
 			countriesDTO.setCountry_name(rs.getString("COUNTRY_NAME"));
 			countriesDTO.setRegion_id(rs.getInt("region_id"));
+			
+			ar.add(countriesDTO);
 		}
 		
 		DBConnector.disConnect(rs, st, con);
