@@ -52,8 +52,8 @@ public class CountriesDAO {
 		if(rs.next()) {
 			countriesDTO = new CountriesDTO();
 			countriesDTO.setCountry_id(rs.getString("COUNTRY_ID"));
-			countriesDTO.setCountry_name(rs.getString("COUNTRY_NAME"));
 			countriesDTO.setRegion_id(rs.getInt("region_id"));
+			countriesDTO.setCountry_name(rs.getString("COUNTRY_NAME"));
 		}
 		
 		DBConnector.disConnect(rs, st, con);
