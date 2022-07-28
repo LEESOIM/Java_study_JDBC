@@ -27,11 +27,8 @@ public class RegionsDAO {
 		// 5) 최종 전송 후 결과 처리
 		ResultSet rs = st.executeQuery();
 		
-		//한줄 읽으세요(데이터가 있으면 true, 없으면 false)
+		//한줄 읽으세요(데이터가 있으면 true, 없으면 false) -> .next() : 먼저 한줄을 꺼내와야 데이터에 값을 넣을 수 있음!
 		while(rs.next()) {//.next() : return타입 boolean
-//			int id = rs.getInt("Region_id"); //이 컬럼에 있는 데이터를 한줄씩 꺼내오겠다
-//			String name = rs.getString("Region_name");
-			
 			RegionsDTO regionsDTO = new RegionsDTO();
 			regionsDTO.setRegion_id(rs.getInt("Region_id"));
 			regionsDTO.setRegion_name(rs.getString("Region_name"));
@@ -72,6 +69,19 @@ public class RegionsDAO {
 		DBConnector.disConnect(rs, st, con);
 		
 		return regionsDTO;
+	}
+	
+	
+	public int setRegion(RegionsDTO regionsDTO) throws Exception {
+		Connection con = DBConnector.getConnection();
+		String sql = "INSERT INTO REGIONS VALUES(?, ?)";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, regionsDTO.getRegion_id());
+		st.setString(2, regionsDTO.getRegion_name());
+		//5) 최종 전송 후 결과 처리(1이면 성공, 0이면 실패)
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;
 	}
 
 }

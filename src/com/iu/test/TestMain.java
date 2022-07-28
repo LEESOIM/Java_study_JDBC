@@ -24,10 +24,10 @@ public class TestMain {
 //			e.printStackTrace();
 //		}
 		
+		//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 		
 		RegionsDAO regionsDAO = new RegionsDAO();
 		RegionsView regionsView = new RegionsView();
-		CountriesView countriesView = new CountriesView();
 		
 		try {
 			
@@ -36,36 +36,70 @@ public class TestMain {
 			
 //			ArrayList<RegionsDTO> ar = regionsDAO.getList();
 //			regionsView.view(ar);
+			
+			RegionsDTO regionsDTO = new RegionsDTO();
+//			regionsDTO.setRegion_id(6);
+//			regionsDTO.setRegion_name("Mars");
+//
+//			int result = regionsDAO.setRegion(regionsDTO);
+//			if(result > 0) {
+//				System.out.println("성공"); //자바는 AutoCommit
+//			} else { 
+//				System.out.println("실패");
+//			}
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		
+		//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+		
 		CountriesDAO countriesDAO = new CountriesDAO();
+		CountriesView countriesView = new CountriesView();
 		try {
 			
 //			CountriesDTO countriesDTO = countriesDAO.getDetail("JP");
 //			countriesView.view(countriesDTO);
 			
-//			ArrayList<CountriesDTO> ar = countriesDAO.getList();
+//			ArrayList<CountriesDTO> ar = countriesDAO.getList("M");
 //			countriesView.view(ar);
+			
+			CountriesDTO countriesDTO = new CountriesDTO(); 
+			countriesDTO.setCountry_id("MA");
+			countriesDTO.setCountry_name("Mars");
+			countriesDTO.setRegion_id(6);
+			
+			int result = countriesDAO.setCountry(countriesDTO);
+			if(result > 0 ) {
+				System.out.println("성공");
+			} else {
+				System.out.println("실패");
+			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
+		
+		
+		//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+		
 		EmployeesDAO employeesDAO = new EmployeesDAO();
 		EmployeesView employeesView = new EmployeesView();
-		ArrayList<EmployeesDTO> ar = new ArrayList();
 		
 		try {
-//			ar = employeesDAO.getList();
+			
+//			employeesDAO.getSalaryInfo();
+			
+//			EmployeesDTO employeesDTO = employeesDAO.getDetail(105);
+//			employeesView.view(employeesDTO);
+
+//			ArrayList<EmployeesDTO> ar = employeesDAO.getList();
 //			employeesView.view(ar);
 			
-			EmployeesDTO employeesDTO = employeesDAO.getDetail(105);
-			employeesView.view(employeesDTO);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
