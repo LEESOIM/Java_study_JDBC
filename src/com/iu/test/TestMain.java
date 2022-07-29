@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.iu.countries.CountriesDAO;
 import com.iu.countries.CountriesDTO;
 import com.iu.countries.CountriesView;
+import com.iu.departments.DepartmentsDTO;
 import com.iu.employees.EmployeesDAO;
 import com.iu.employees.EmployeesDTO;
 import com.iu.employees.EmployeesView;
@@ -66,17 +67,17 @@ public class TestMain {
 //			ArrayList<CountriesDTO> ar = countriesDAO.getList("M");
 //			countriesView.view(ar);
 			
-			CountriesDTO countriesDTO = new CountriesDTO(); 
-			countriesDTO.setCountry_id("MA");
-			countriesDTO.setCountry_name("Mars");
-			countriesDTO.setRegion_id(6);
-			
-			int result = countriesDAO.setCountry(countriesDTO);
-			if(result > 0 ) {
-				System.out.println("성공");
-			} else {
-				System.out.println("실패");
-			}
+//			CountriesDTO countriesDTO = new CountriesDTO(); 
+//			countriesDTO.setCountry_id("MA");
+//			countriesDTO.setCountry_name("Mars");
+//			countriesDTO.setRegion_id(6);
+//			
+//			int result = countriesDAO.setCountry(countriesDTO);
+//			if(result > 0 ) {
+//				System.out.println("성공");
+//			} else {
+//				System.out.println("실패");
+//			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -99,6 +100,13 @@ public class TestMain {
 
 //			ArrayList<EmployeesDTO> ar = employeesDAO.getList();
 //			employeesView.view(ar);
+			
+			EmployeesDTO employeesDTO = employeesDAO.getDetail(100); 
+			DepartmentsDTO departmentsDTO = null;
+			employeesDAO.getJoinTest(employeesDTO);args
+			System.out.println(employeesDTO.getLast_name());
+			System.out.println(employeesDTO.getSalary());
+			System.out.println(departmentsDTO.getDepartment_name());
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

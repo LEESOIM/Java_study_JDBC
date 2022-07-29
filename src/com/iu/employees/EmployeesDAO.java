@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
 import com.iu.countries.CountriesDTO;
+import com.iu.departments.DepartmentsDTO;
 import com.iu.util.DBConnector;
 
 public class EmployeesDAO {
@@ -96,5 +97,31 @@ public class EmployeesDAO {
 		
 		DBConnector.disConnect(rs, st, con);
 		return employeesDTO;
+	}
+	
+	public ArrayList getJoinTest(EmployeesDTO employeesDTO) throws Exception {
+		Connection con = DBConnector.getConnection();
+		String sql = "SELECT E.LAST_NAME, E.SALARY, D.DEPARTMENT_NAME "
+				+ "FROM employees E "
+				+ "    INNER JOIN "
+				+ "    departments D "
+				+ "    ON E.DEPARTMENT_ID = D.DEPARTMENT_ID "
+				+ "WHERE E.EMPLOYEE_ID = ?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, employeesDTO.getEmployee_id());
+		ResultSet rs = st.executeQuery();
+		ArrayList ar = new ArrayList();
+		if(rs.next()) { //한줄이 있다면
+			employeesDTO = new EmployeesDTO(); //더이상 안쓰는 변수에 새객체를 덮어씌움
+			employeesDTO.setLast_name(rs.getString("LAST_NAME"));
+			employeesDTO.setSalary(rs.getInt("SALARY"));
+			ar.add(employeesDTO);
+			
+			DepartmentsDTO departmentsDTO = new DepartmentsDTO();
+			departmentsDTO.setDepartment_name(rs.getString("DEPARTMENT_NAME"));
+			ar.add(departmentsDTO);
+		}
+		DBConnector.disConnect(rs, st, con);
+		return ar;
 	}
 }
