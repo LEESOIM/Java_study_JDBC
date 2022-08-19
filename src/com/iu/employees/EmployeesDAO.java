@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
 import com.iu.countries.CountriesDTO;
-import com.iu.departments.DepartmentsDTO;
 import com.iu.util.DBConnector;
 
 public class EmployeesDAO {
@@ -116,10 +115,6 @@ public class EmployeesDAO {
 			employeesDTO.setLast_name(rs.getString("LAST_NAME"));
 			employeesDTO.setSalary(rs.getInt("SALARY"));
 			ar.add(employeesDTO);
-			
-			DepartmentsDTO departmentsDTO = new DepartmentsDTO();
-			departmentsDTO.setDepartment_name(rs.getString("DEPARTMENT_NAME"));
-			ar.add(departmentsDTO);
 		}
 		DBConnector.disConnect(rs, st, con);
 		return ar;

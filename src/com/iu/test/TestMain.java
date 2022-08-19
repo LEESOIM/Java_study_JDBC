@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import com.iu.countries.CountriesDAO;
 import com.iu.countries.CountriesDTO;
 import com.iu.countries.CountriesView;
-import com.iu.departments.DepartmentsDTO;
 import com.iu.employees.EmployeesDAO;
 import com.iu.employees.EmployeesDTO;
 import com.iu.employees.EmployeesView;
@@ -102,11 +101,9 @@ public class TestMain {
 //			employeesView.view(ar);
 			
 			EmployeesDTO employeesDTO = employeesDAO.getDetail(100); 
-			DepartmentsDTO departmentsDTO = null;
-			employeesDAO.getJoinTest(employeesDTO);args
+			employeesDAO.getJoinTest(employeesDTO);
 			System.out.println(employeesDTO.getLast_name());
 			System.out.println(employeesDTO.getSalary());
-			System.out.println(departmentsDTO.getDepartment_name());
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
